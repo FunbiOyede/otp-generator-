@@ -1,0 +1,10 @@
+{
+  "name": "otp",
+  "version": "1.0.0",
+  "description": "otp generator and validator",
+  "main": "index.js",
+  "repository": "https://github.com/FunbiOyede/nodejs-otp.git",
+  "author": "FunbiOyede <oyedetobi49@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
