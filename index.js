@@ -5,6 +5,7 @@ class OTP {
     this.alphabethToUpperCase = this.alphabeth.toUpperCase();
     this.specialCharacters = "!#$%&()*+/<>?@[]^{}~";
     this.chars = "";
+    this.password = "";
   }
 
   /**
@@ -28,22 +29,51 @@ class OTP {
     if (length !== undefined) {
       let Length = length || 6;
       let OptionsForGenerating = { ...options } || {};
-      if (OptionsForGenerating.hasOwnProperty("digits")) {
-        OptionsForGenerating.digits = options.digits;
-      } else {
-        OptionsForGenerating.digits = true;
-      }
+
+      OptionsForGenerating.digits = OptionsForGenerating.hasOwnProperty(
+        "digits"
+      )
+        ? options.digits
+        : true;
+      OptionsForGenerating.alphabeth = OptionsForGenerating.hasOwnProperty(
+        "alphabeth"
+      )
+        ? options.alphabeth
+        : true;
+      OptionsForGenerating.alphabethToUpperCase = OptionsForGenerating.hasOwnProperty(
+        "alphabethToUpperCase"
+      )
+        ? options.alphabethToUpperCase
+        : true;
+      OptionsForGenerating.specialCharacters = OptionsForGenerating.hasOwnProperty(
+        "specialCharacters"
+      )
+        ? options.specialCharacters
+        : true;
+
       this.charContenation(OptionsForGenerating);
+
+      for (let i = 0; i < Length; ++i) {
+        let indexChar = this.randomHandler(0, this.chars.length);
+        this.password += this.chars[indexChar];
+      }
+      return this.password;
     } else {
       throw new Error("lenght is undefined");
     }
   }
 
   charContenation(generatedOptions) {
-    this.chars = (generatedOptions.digits || "") && this.digits;
-    console.log(this.chars);
+    this.chars =
+      ((generatedOptions.digits || "") && this.digits) +
+      ((generatedOptions.alphabeth || "") && this.alphabeth) +
+      ((generatedOptions.alphabethToUpperCase || "") &&
+        this.alphabethToUpperCase) +
+      ((generatedOptions.specialCharacters || "") && this.specialCharacters);
   }
 }
 
 let opt = new OTP();
-opt.generate(10, { digits: true });
+console.log(
+  opt.generate(10, { digits: true, specialCharacters: false, alphabeth: true })
+);
