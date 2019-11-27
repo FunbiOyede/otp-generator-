@@ -24,6 +24,7 @@ class OTP {
    *
    * @param {number} length  length of passowrd
    * @param {object} options
+   * @returns {string} password
    */
   generate(length, options) {
     if (length !== undefined) {
@@ -51,7 +52,7 @@ class OTP {
         ? options.specialCharacters
         : true;
 
-      this.charContenation(OptionsForGenerating);
+      this.charConcatenate(OptionsForGenerating);
 
       for (let i = 0; i < Length; ++i) {
         let indexChar = this.randomHandler(0, this.chars.length);
@@ -63,7 +64,12 @@ class OTP {
     }
   }
 
-  charContenation(generatedOptions) {
+  /**
+   *
+   * @param {object} generatedOptions
+   * @function concatenate chars
+   */
+  charConcatenate(generatedOptions) {
     this.chars =
       ((generatedOptions.digits || "") && this.digits) +
       ((generatedOptions.alphabeth || "") && this.alphabeth) +
