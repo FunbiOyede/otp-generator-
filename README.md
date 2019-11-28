@@ -1,6 +1,6 @@
 # nodejs-OTP
 
-This is a simple package to generate and validate OTP (One Time Passwords).
+This is a simple package that generates and validates OTPs (One Time Passwords).
 
 ### Installation
 
