@@ -1,11 +1,11 @@
 class OTP {
   constructor() {
-    this.digits = '0123456789';
-    this.alphabet = 'abcdefghijklmnopqrstuvwxyz';
+    this.digits = "0123456789";
+    this.alphabet = "abcdefghijklmnopqrstuvwxyz";
     this.alphabetToUpperCase = this.alphabet.toUpperCase();
-    this.specialCharacters = '!#$%&()*+/<>?@[]^{}~';
-    this.chars = '';
-    this.password = '';
+    this.specialCharacters = "!#$%&()*+/<>?@[]^{}~";
+    this.chars = "";
+    this.password = "";
   }
 
   /**
@@ -26,28 +26,29 @@ class OTP {
    * @param {object} options
    * @returns {string} password
    */
+
   generate(length, options) {
     if (length !== undefined) {
       const Length = length || 6;
       const OptionsForGenerating = { ...options } || {};
 
       OptionsForGenerating.digits = OptionsForGenerating.hasOwnProperty(
-        'digits',
+        "digits"
       )
         ? options.digits
         : true;
       OptionsForGenerating.alphabet = OptionsForGenerating.hasOwnProperty(
-        'alphabet',
+        "alphabet"
       )
         ? options.alphabet
         : true;
       OptionsForGenerating.alphabetToUpperCase = OptionsForGenerating.hasOwnProperty(
-        'alphabetToUpperCase',
+        "alphabetToUpperCase"
       )
         ? options.alphabetToUpperCase
         : true;
       OptionsForGenerating.specialCharacters = OptionsForGenerating.hasOwnProperty(
-        'specialCharacters',
+        "specialCharacters"
       )
         ? options.specialCharacters
         : true;
@@ -61,36 +62,10 @@ class OTP {
       return {
         token: this.password,
         status: true,
-        message: 'OTP generated',
+        message: "OTP generated"
       };
     }
-    throw new Error('lenght is undefined');
-  }
-
-  /**
-   *
-   * @param {string} token
-   * @returns {object} json object
-   */
-  validate(token) {
-    if (token === null) {
-      return JSON.stringify({
-        status: false,
-        message: 'OTP does not exit',
-      });
-    }
-    if (token !== this.password) {
-      return JSON.stringify({
-        status: false,
-        message: 'OTP is not valid',
-      });
-    }
-    if (token === this.password) {
-      return JSON.stringify({
-        status: true,
-        message: 'OTP is valid',
-      });
-    }
+    throw new Error("lenght is undefined");
   }
 
   /**
@@ -98,12 +73,41 @@ class OTP {
    * @param {object} generatedOptions
    * @function concatenate chars
    */
+
   charConcatenate(generatedOptions) {
-    this.chars = ((generatedOptions.digits || '') && this.digits)
-      + ((generatedOptions.alphabet || '') && this.alphabet)
-      + ((generatedOptions.alphabetToUpperCase || '')
-        && this.alphabetToUpperCase)
-      + ((generatedOptions.specialCharacters || '') && this.specialCharacters);
+    this.chars =
+      ((generatedOptions.digits || "") && this.digits) +
+      ((generatedOptions.alphabet || "") && this.alphabet) +
+      ((generatedOptions.alphabetToUpperCase || "") &&
+        this.alphabetToUpperCase) +
+      ((generatedOptions.specialCharacters || "") && this.specialCharacters);
+  }
+
+  /**
+   *
+   * @param {string} token
+   * @returns {object} json object
+   */
+
+  validate(token) {
+    if (token === null) {
+      return JSON.stringify({
+        status: false,
+        message: "OTP does not exit"
+      });
+    }
+    if (token !== this.password) {
+      return JSON.stringify({
+        status: false,
+        message: "OTP is not valid"
+      });
+    }
+    if (token === this.password) {
+      return JSON.stringify({
+        status: true,
+        message: "OTP is valid"
+      });
+    }
   }
 }
 
