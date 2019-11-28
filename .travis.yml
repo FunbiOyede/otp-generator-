@@ -1,2 +1,4 @@
 langauge: node_js
 node_js: node
+cache:
+  yarn: false
