@@ -1,8 +1,8 @@
 class OTP {
   constructor() {
     this.digits = "0123456789";
-    this.alphabeth = "abcdefghijklmnopqrstuvwxyz";
-    this.alphabethToUpperCase = this.alphabeth.toUpperCase();
+    this.alphabet = "abcdefghijklmnopqrstuvwxyz";
+    this.alphabetToUpperCase = this.alphabet.toUpperCase();
     this.specialCharacters = "!#$%&()*+/<>?@[]^{}~";
     this.chars = "";
     this.password = "";
@@ -36,15 +36,15 @@ class OTP {
       )
         ? options.digits
         : true;
-      OptionsForGenerating.alphabeth = OptionsForGenerating.hasOwnProperty(
-        "alphabeth"
+      OptionsForGenerating.alphabet = OptionsForGenerating.hasOwnProperty(
+        "alphabet"
       )
-        ? options.alphabeth
+        ? options.alphabet
         : true;
-      OptionsForGenerating.alphabethToUpperCase = OptionsForGenerating.hasOwnProperty(
-        "alphabethToUpperCase"
+      OptionsForGenerating.alphabetToUpperCase = OptionsForGenerating.hasOwnProperty(
+        "alphabetToUpperCase"
       )
-        ? options.alphabethToUpperCase
+        ? options.alphabetToUpperCase
         : true;
       OptionsForGenerating.specialCharacters = OptionsForGenerating.hasOwnProperty(
         "specialCharacters"
@@ -58,9 +58,40 @@ class OTP {
         let indexChar = this.randomHandler(0, this.chars.length);
         this.password += this.chars[indexChar];
       }
-      return this.password;
+      return {
+        token: this.password,
+        status: true,
+        message: "OTP generated"
+      };
     } else {
       throw new Error("lenght is undefined");
+    }
+  }
+
+  /**
+   *
+   * @param {string} token
+   * @returns {object} json object
+   */
+  validate(token) {
+    console.log(this.password);
+    if (token === null) {
+      return JSON.stringify({
+        status: false,
+        message: "OTP does not exit"
+      });
+    }
+    if (token !== this.password) {
+      return JSON.stringify({
+        status: false,
+        message: "OTP is not valid"
+      });
+    }
+    if (token === this.password) {
+      return JSON.stringify({
+        status: true,
+        message: "OTP is valid"
+      });
     }
   }
 
@@ -72,14 +103,21 @@ class OTP {
   charConcatenate(generatedOptions) {
     this.chars =
       ((generatedOptions.digits || "") && this.digits) +
-      ((generatedOptions.alphabeth || "") && this.alphabeth) +
-      ((generatedOptions.alphabethToUpperCase || "") &&
-        this.alphabethToUpperCase) +
+      ((generatedOptions.alphabet || "") && this.alphabet) +
+      ((generatedOptions.alphabetToUpperCase || "") &&
+        this.alphabetToUpperCase) +
       ((generatedOptions.specialCharacters || "") && this.specialCharacters);
   }
 }
 
 let opt = new OTP();
-console.log(
-  opt.generate(10, { digits: true, specialCharacters: false, alphabeth: true })
-);
+let genOTP = opt.generate(10, {
+  digits: true,
+  specialCharacters: false,
+  alphabet: true
+});
+
+console.log(genOTP);
+
+// Validate method
+console.log(opt.validate(genOTP.token));
