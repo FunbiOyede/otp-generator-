@@ -38,7 +38,7 @@ const otpGenerator = require('packagename');
 
 const otp = new otpGenerator();
 
-otp.generate(10,{digits:true,alphabet:true,alphabetToUpperCase:false,specialCharacters:true})
+otp.generate(10,{digits:true,alphabet:true,alphabetToUpperCase:true,specialCharacters:true})
 
  ```
  
