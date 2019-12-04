@@ -5,9 +5,7 @@ This is a simple package that generates and validates OTPs (One Time Passwords).
 ### Installation
 
 ```
-yarn add whatever generator
-
-npm install whatever --save
+npm i automatic-otp
 
 ```
 

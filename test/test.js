@@ -1,7 +1,7 @@
 const expect = require("chai").expect;
 const should = require("chai").should();
-let OtpGenerator = require("../src/index");
-let validator = require("../src/index");
+let OtpGenerator = require("../index");
+let validator = require("../index");
 
 describe("OTP GENERATOR", function() {
   it("should return default of 6 digits when the length of otp is not specified", function() {
