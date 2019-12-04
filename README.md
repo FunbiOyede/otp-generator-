@@ -45,7 +45,6 @@ otp.generate(10,{digits:true,specialCharacters:true,alphabet:true})
 
 This will generate a ten digit OTP, that includes special characters and alphabet. And the success response will be:
 
-```
 
 {
 token: 'dwe7XW&RF&',
@@ -55,7 +54,9 @@ message: 'OTP generated'
 
 ```
 
-Validate
+
+
+### Validate
 
 ```
 
