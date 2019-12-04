@@ -1,4 +1,6 @@
-# Automatic-OTP
+[![Build Status](https://travis-ci.org/FunbiOyede/otp-generator-.svg?branch=master)](https://travis-ci.org/FunbiOyede/otp-generator-)
+
+# Automatic-OTP 🔑
 
 This is a simple package that generates and validates OTPs (One Time Passwords).
 
