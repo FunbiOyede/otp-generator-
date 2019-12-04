@@ -7,7 +7,14 @@
   "author": "FunbiOyede <oyedetobi49@gmail.com>",
   "license": "MIT",
   "private": false,
-  "dependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.2.2",
+    "moment": "^2.24.0"
+  },
   "devDependencies": {
     "eslint": "^6.7.1",
     "eslint-config-airbnb-base": "^14.0.0",

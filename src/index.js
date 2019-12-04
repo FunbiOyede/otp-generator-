@@ -27,11 +27,9 @@ class OTP {
    * @returns {string} password
    */
 
-  generate(length, options) {
-    if (length !== undefined) {
-      const Length = length || 6;
+  generate(Length = 6, options) {
+    if (Length !== undefined) {
       const OptionsForGenerating = { ...options } || {};
-
       OptionsForGenerating.digits = OptionsForGenerating.hasOwnProperty(
         "digits"
       )
@@ -59,13 +57,15 @@ class OTP {
         const indexChar = this.randomHandler(0, this.chars.length);
         this.password += this.chars[indexChar];
       }
+
       return {
         token: this.password,
         status: true,
         message: "OTP generated"
       };
+    } else {
+      throw new Error("lenght is undefined");
     }
-    throw new Error("lenght is undefined");
   }
 
   /**
@@ -89,20 +89,20 @@ class OTP {
    * @returns {object} json object
    */
 
-  validate(token) {
-    if (token === null) {
+  validate(password) {
+    if (password.token === null) {
       return JSON.stringify({
         status: false,
         message: "OTP does not exit"
       });
     }
-    if (token !== this.password) {
+    if (password.token !== this.password) {
       return JSON.stringify({
         status: false,
         message: "OTP is not valid"
       });
     }
-    if (token === this.password) {
+    if (password.token === this.password) {
       return JSON.stringify({
         status: true,
         message: "OTP is valid"
