@@ -1,6 +1,6 @@
 {
   "name": "automatic-otp",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "otp generator and validator",
   "main": "index.js",
   "repository": "https://github.com/FunbiOyede/nodejs-otp.git",

@@ -1,4 +1,4 @@
-# nodejs-OTP
+# Automatic-OTP
 
 This is a simple package that generates and validates OTPs (One Time Passwords).
 
@@ -12,11 +12,11 @@ npm i automatic-otp
 ### Usage
 
 ```
-const otpGenerator = require('packagename');
+const OTP = require('automatic-otp');
 
-const password = new otpGenerator();
+const otp = new OTP();
 
-password.generate(8,{digits:true,specialCharacters:true,alphabet:true})
+otp.generate(length,options)
 
 ```
 
@@ -33,17 +33,20 @@ password.generate(8,{digits:true,specialCharacters:true,alphabet:true})
 Generate Sample
 
 ```
-const otpGenerator = require('packagename');
+const OTP = require('automatic-otp');
 
-const otp = new otpGenerator();
+const otp = new OTP();
 
-otp.generate(10,{digits:true,alphabet:true,alphabetToUpperCase:true,specialCharacters:true})
+otp.generate(10,{digits:true,specialCharacters:true,alphabet:true})
+
+```
 
 ```
 
-This will generate a ten digit OTP and the success response will be:
+This will generate a ten digit OTP, that includes special characters and alphabet. And the success response will be:
 
 ```
+
 {
 token: 'dwe7XW&RF&',
 status: true,
@@ -52,12 +55,13 @@ message: 'OTP generated'
 
 ```
 
-Validate Sample
+Validate
 
 ```
-const otpGenerator = require('packagename');
 
-const otp = new otpGenerator();
+const OTP = require('automatic-otp');
+
+const otp = new OTP();
 
 otp.validate(token)
 
@@ -68,26 +72,34 @@ Responses
 1. Successful Validation
 
 ```
+
 {
 "status":true,
 "message":"OTP is valid"
 }
+
 ```
 
 2. Does not exist. If null
 
 ```
+
 {
 "status":false,
 "message":"OTP does not exit"
 }
+
 ```
 
 3 .Invalid. Does not match
 
 ```
+
 {
 "status":false,
 "message":"OTP is not valid"
 }
+
+```
+
 ```
