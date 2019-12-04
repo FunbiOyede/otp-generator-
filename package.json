@@ -1,9 +1,17 @@
 {
   "name": "automatic-otp",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "otp generator and validator",
   "main": "index.js",
   "repository": "https://github.com/FunbiOyede/nodejs-otp.git",
+  "keyword": [
+    "OTP",
+    "password-generator",
+    "one time password",
+    "generator",
+    "otp-validator",
+    "validator"
+  ],
   "author": "FunbiOyede <oyedetobi49@gmail.com>",
   "license": "MIT",
   "private": false,
