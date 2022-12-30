@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "chai": "^4.2.0",
-    "mocha": "^6.2.2",
+    "mocha": "^10.2.0",
     "moment": "^2.24.0"
   },
   "devDependencies": {
